@@ -1,5 +1,11 @@
 // Configuração central lida das variáveis de ambiente do Vite.
-// Todas são públicas por natureza (cliente público, sem secret).
+// Todas são públicas por natureza (cliente público, sem secret) — o Client ID
+// da WCA fica embutido no bundle de qualquer forma, então ter um padrão aqui
+// não é problema de segurança. As envs VITE_* continuam sobrepondo (ex.: para
+// apontar ao staging).
+
+// Client ID (Application UID) padrão do app WCA do ScoreComps (produção).
+const DEFAULT_WCA_CLIENT_ID = 'excsX95XmC-vQcKfCd7Qno_4yw7KjFgDz1HLs1jtIws'
 
 const rawOrigin = (import.meta.env.VITE_WCA_ORIGIN ?? 'https://www.worldcubeassociation.org').replace(
   /\/$/,
@@ -8,7 +14,7 @@ const rawOrigin = (import.meta.env.VITE_WCA_ORIGIN ?? 'https://www.worldcubeasso
 
 export const config = {
   /** Client ID (Application UID) do app OAuth registrado na WCA. */
-  wcaClientId: import.meta.env.VITE_WCA_CLIENT_ID ?? '',
+  wcaClientId: (import.meta.env.VITE_WCA_CLIENT_ID || DEFAULT_WCA_CLIENT_ID).trim(),
 
   /** Origem da WCA (produção ou staging). */
   wcaOrigin: rawOrigin,

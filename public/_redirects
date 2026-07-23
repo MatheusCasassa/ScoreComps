@@ -1,1 +1,5 @@
-/*    /index.html   200
+# Sem regras aqui de propósito.
+# O fallback de SPA na Cloudflare é feito pelo wrangler.jsonc
+# (assets.not_found_handling = "single-page-application").
+# Uma regra "/*  /index.html  200" quebra o deploy na Cloudflare
+# (erro 100324: loop infinito).
