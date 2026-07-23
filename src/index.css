@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-950 text-slate-100 antialiased;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Rolagem suave respeitando reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Componentes utilitários reutilizados na UI */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
+           text-sm font-semibold transition-colors focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2
+           focus-visible:ring-offset-ink-950 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-500 active:bg-brand-700;
+  }
+  .btn-ghost {
+    @apply btn bg-ink-800 text-slate-200 hover:bg-ink-700 border border-ink-600;
+  }
+  .btn-danger {
+    @apply btn bg-accent-red/90 text-white hover:bg-accent-red;
+  }
+  .card {
+    @apply rounded-xl border border-ink-700 bg-ink-900/70 shadow-lg;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-600 bg-ink-800 px-3 py-2 text-sm
+           text-slate-100 placeholder:text-slate-500 focus:border-brand-400
+           focus:outline-none focus:ring-1 focus:ring-brand-400;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-400;
+  }
+}
