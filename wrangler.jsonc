@@ -1,0 +1,12 @@
+{
+  // Deploy do ScoreComps na Cloudflare (Workers com Static Assets).
+  // Serve o build estático do Vite (dist/) como SPA — sem código de Worker.
+  // Isso evita o auto-config do plugin de Vite do wrangler (que exigiria Vite 6+)
+  // e faz o fallback de rotas para index.html (login volta na raiz com #token).
+  "name": "scorecomps",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
