@@ -51,14 +51,14 @@ export const SCORECARD_CSS =
 .sc-id { border-right: var(--thin); }
 .sc-grp { border-left: var(--thin); }
 .sc-lbl { font-size: 8.5px; font-weight: 600; letter-spacing: .04em; color: #6b7180; text-transform: uppercase; }
-.sc-big { font-size: 20px; font-weight: 800; }
+.sc-big { font-size: 20px; font-weight: 700; }
 .sc-mid { gap: 1px; }
-.sc-comp { font-size: 13px; font-weight: 800; text-align: center; line-height: 1.05; }
+.sc-comp { font-size: 13px; font-weight: 700; text-align: center; line-height: 1.05; }
 .sc-event { font-size: 10.5px; font-weight: 500; color: #2b2f3a; text-align: center; }
 
 /* Nome do competidor — usa a LARGURA TOTAL do cartão (inclui o vão do ID/Grupo) */
 .sc-name { padding: 4px 5px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.sc-name-main { font-weight: 800; width: 100%; overflow-wrap: anywhere; line-height: 1.08; }
+.sc-name-main { font-weight: 700; width: 100%; overflow-wrap: anywhere; line-height: 1.08; }
 .sc-wca { font-size: 9.5px; font-weight: 600; color: #6b7180; margin-top: 1px; }
 
 /* Faixa de configuração (DNF / cumulativo + penalidade) — largura total */
@@ -70,22 +70,22 @@ export const SCORECARD_CSS =
 .sc-colhead { display: flex; align-items: center; padding-bottom: 2px; }
 .sc-colhead .num-sp { width: ${NUM_W}px; text-align: center; }
 .sc-colhead .labels { flex: 1; display: grid; }
-.sc-colhead .labels > span { text-align: center; font-size: 12.5px; font-weight: 800; }
-.sc-colhead .lbl-hash { font-size: 14px; font-weight: 800; }
+.sc-colhead .labels > span { text-align: center; font-size: 12.5px; font-weight: 700; }
+.sc-colhead .lbl-hash { font-size: 14px; font-weight: 700; }
 
 /* Linha de solve: número grande à esquerda + tira de caixas */
 .sc-solve { display: flex; align-items: stretch; height: ${ROW_H}px; margin-bottom: 5px; }
-.sc-solve .num { width: ${NUM_W}px; display: flex; align-items: center; justify-content: center; font-size: 21px; font-weight: 800; }
+.sc-solve .num { width: ${NUM_W}px; display: flex; align-items: center; justify-content: center; font-size: 21px; font-weight: 700; }
 .sc-solve .boxes { flex: 1; display: grid; border: var(--thick); border-radius: 4px; overflow: hidden; }
 .sc-solve .cell { position: relative; }
 .sc-solve .cell:not(:last-child) { border-right: var(--thin); }
 .sc-solve .cell.d { display: flex; align-items: center; justify-content: center; }
-.sc-solve .cell.d .dmark { font-size: 24px; font-weight: 800; color: var(--ink); opacity: .25; line-height: 1; }
+.sc-solve .cell.d .dmark { font-size: 24px; font-weight: 700; color: var(--ink); opacity: .25; line-height: 1; }
 
 /* Textos intermediários */
 .sc-cut, .sc-extras-label { text-align: center; padding: 2px 4px 4px; }
 .sc-cut { font-size: 11px; font-weight: 600; color: #2b2f3a; }
-.sc-extras-label { font-size: 12px; font-weight: 800; }
+.sc-extras-label { font-size: 12px; font-weight: 700; }
 
 .sc-spacer { flex: 1 1 auto; min-height: 0; }
 `
