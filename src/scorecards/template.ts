@@ -2,22 +2,28 @@
 // Renderizado no DOM e rasterizado (html2canvas) para compor o PDF.
 
 import type { ScorecardModel, ScorecardRow } from './logic'
+import { INTER_FONT_CSS } from './interFont'
 
 /** px por mm a 96dpi (base de renderização). */
 export const PX_PER_MM = 96 / 25.4 // ≈ 3.7795
 
 const STYLE_ID = 'sc-styles'
 
+// "InterSC" é a Inter embutida em base64 (interFont.ts): garante que o
+// html2canvas renderize os pesos negrito corretos. Depois vêm os fallbacks
+// (incluindo fontes CJK do sistema para nomes com caracteres chineses).
 const FONT_STACK =
-  "'Inter','Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','PingFang SC'," +
-  "'Hiragino Sans','Microsoft YaHei',sans-serif"
+  "'InterSC','Inter','Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC'," +
+  "'PingFang SC','Hiragino Sans','Microsoft YaHei',sans-serif"
 
 // Larguras fixas das colunas (px no tamanho de projeto ~397px de largura).
 const NUM_W = 34
 const SIG_W = 40 // colunas de assinatura padronizadas (S, J, C, D)
 const ROW_H = 42
 
-export const SCORECARD_CSS = `
+export const SCORECARD_CSS =
+  INTER_FONT_CSS +
+  `
 .sc, .sc * { box-sizing: border-box; margin: 0; padding: 0; }
 .sc {
   --ink: #14161c;
@@ -110,7 +116,7 @@ function nameWeight(name: string): number {
 // Calibrado para Inter bold (~0.53 de avanço por caractere) numa faixa útil.
 function nameFontPx(name: string): number {
   const w = Math.max(nameWeight(name), 1)
-  const px = 735 / w
+  const px = 690 / w
   return Math.round(Math.max(11.5, Math.min(22, px)) * 10) / 10
 }
 

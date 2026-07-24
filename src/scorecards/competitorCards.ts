@@ -5,13 +5,16 @@ import { jsPDF } from 'jspdf'
 import type { Wcif, WcifActivity } from '../wca/types'
 import { eventName } from './format'
 import { PX_PER_MM } from './template'
+import { INTER_FONT_CSS } from './interFont'
 import { renderHtmlToCanvas } from './export'
 
 const STYLE_ID = 'cc-styles'
 const FONT_STACK =
-  "'Inter','Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','PingFang SC','Hiragino Sans','Microsoft YaHei',sans-serif"
+  "'InterSC','Inter','Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','PingFang SC','Hiragino Sans','Microsoft YaHei',sans-serif"
 
-export const COMPETITOR_CARD_CSS = `
+export const COMPETITOR_CARD_CSS =
+  INTER_FONT_CSS +
+  `
 .cc, .cc * { box-sizing: border-box; margin: 0; padding: 0; }
 .cc { background:#fff; color:#14161c; font-family:${FONT_STACK}; display:flex; flex-direction:column; padding:8px 10px; overflow:hidden; -webkit-font-smoothing:antialiased; }
 .cc-name { font-size:16px; font-weight:800; line-height:1.1; overflow-wrap:anywhere; }

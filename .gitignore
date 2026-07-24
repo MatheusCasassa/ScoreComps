@@ -18,3 +18,8 @@ cc-preview.*
 smoke-*.png
 sumulas-exemplo-*.pdf
 cartoes-exemplo.pdf
+
+# diagnóstico (dev)
+reproduce-app.*
+repro.html
+repro-h2c.png
