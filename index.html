@@ -4,8 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ScoreComps — agrupamento, staff e súmulas oficiais da WCA para Delegados e Organizadores (CubingSP)." />
-    <title>ScoreComps · CubingSP</title>
+    <meta name="description" content="ScoreComps — agrupamento, atribuição de tarefas e súmulas oficiais da WCA para Delegados e Organizadores." />
+    <title>ScoreComps</title>
+    <script>
+      // Aplica o tema salvo antes do render (evita flash). Padrão: escuro.
+      try {
+        var t = localStorage.getItem('scorecomps.theme')
+        document.documentElement.classList.toggle('dark', t !== 'light')
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -5,7 +5,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta CubingSP (identidade-visual.md)
         brand: {
           300: '#8fa3f5',
           400: '#5c77ee',
@@ -25,9 +24,22 @@ export default {
           red: '#c81e3c',
           yellow: '#f5c518',
         },
+        // Cores da logo do ScoreComps
+        canary: '#ffdf00', // amarelo canarinho
+        navy: '#14235e', // azul escuro
+        // Tokens semânticos de tema (definidos como CSS vars em index.css)
+        'app-bg': 'var(--bg)',
+        'app-surface': 'var(--surface)',
+        'app-surface-2': 'var(--surface-2)',
+        'app-surface-3': 'var(--surface-3)',
+        'app-fg': 'var(--fg)',
+        'app-muted': 'var(--muted)',
+        'app-faint': 'var(--faint)',
+        'app-border': 'var(--border)',
+        'app-border-strong': 'var(--border-strong)',
       },
       fontFamily: {
-        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Geist', 'system-ui', 'sans-serif'],
         mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
     },

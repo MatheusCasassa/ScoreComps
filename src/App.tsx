@@ -5,6 +5,7 @@ import { Login } from './components/Login'
 import { CompetitionList } from './components/CompetitionList'
 import { CompetitionView } from './components/CompetitionView'
 import { Spinner } from './components/Spinner'
+import { Footer } from './components/Footer'
 import type { CompetitionListItem } from './wca/types'
 
 export default function App() {
@@ -12,9 +13,9 @@ export default function App() {
   const [competition, setCompetition] = useState<CompetitionListItem | null>(null)
 
   return (
-    <div className="min-h-full">
+    <div className="flex min-h-full flex-col">
       <Header />
-      <main>
+      <main className="flex-1">
         {status === 'loading' && <Spinner label="Verificando sessão…" />}
 
         {(status === 'anonymous' || status === 'error') && <Login />}
@@ -27,9 +28,7 @@ export default function App() {
           ))}
       </main>
 
-      <footer className="mx-auto max-w-5xl px-4 py-8 text-center text-xs text-slate-600">
-        Ferramenta não oficial · dados via API da WCA · feito para a comunidade CubingSP
-      </footer>
+      <Footer />
     </div>
   )
 }

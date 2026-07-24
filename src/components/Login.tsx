@@ -1,96 +1,50 @@
-import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
 import { isConfigured } from '../config'
-import { downloadScorecardsPdf } from '../scorecards/export'
-import { demoModels } from '../scorecards/demo'
-import { PAPER_OPTIONS, type PaperId } from '../scorecards/paper'
-import { ScorecardPreview } from './ScorecardPreview'
 
 export function Login() {
   const { login, error } = useAuth()
   const configured = isConfigured()
-  const [paper, setPaper] = useState<PaperId>('a4')
-  const [busy, setBusy] = useState(false)
-  const preview = demoModels()[1] // nome longo com caracteres CJK
-
-  const gerarExemplo = async () => {
-    setBusy(true)
-    try {
-      await downloadScorecardsPdf(demoModels(), { paperId: paper }, `sumulas-exemplo-${paper}.pdf`)
-    } finally {
-      setBusy(false)
-    }
-  }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="grid items-start gap-8 md:grid-cols-2">
-        <div className="card p-8">
-          <h1 className="text-2xl font-bold">
-            Score<span className="text-accent-red">Comps</span>
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-slate-400">
-            Ferramenta para <strong className="text-slate-200">Delegados</strong> e{' '}
-            <strong className="text-slate-200">Organizadores</strong>: agrupamento, atribuição de
-            staff e <strong className="text-slate-200">súmulas</strong> em PDF, a partir dos dados
-            oficiais da WCA.
-          </p>
+    <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-6 py-20 text-center sm:py-28">
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl">
+        Score<span className="text-navy dark:text-canary">Comps</span>
+      </h1>
 
-          {error && (
-            <div className="mt-5 rounded-lg border border-accent-red/40 bg-accent-red/10 px-4 py-3 text-sm text-red-200">
-              {error}
-            </div>
-          )}
+      <p className="mt-8 max-w-3xl text-lg leading-relaxed text-app-fg sm:text-xl">
+        O ScoreComps é uma ferramenta feita para facilitar Delegados e Organizadores com as
+        principais tarefas para uma competição: <strong>Agrupamento</strong>,{' '}
+        <strong>Atribuição de Tarefas</strong> e <strong>Geração de Súmulas em PDF</strong>, tudo a
+        partir dos dados oficiais da WCA.
+      </p>
 
-          {!configured && (
-            <div className="mt-5 rounded-lg border border-accent-yellow/40 bg-accent-yellow/10 px-4 py-3 text-sm text-amber-100">
-              <strong>Configuração pendente.</strong> Defina <code>VITE_WCA_CLIENT_ID</code> no
-              arquivo <code>.env</code> (veja o README).
-            </div>
-          )}
+      <p className="mt-5 max-w-2xl text-base leading-relaxed text-app-muted">
+        Para utilizar a ferramenta, é necessário fazer login em sua conta WCA. Nenhuma senha ou
+        armazenamento passam por aqui, roda 100% no seu navegador.
+      </p>
 
-          <div className="mt-6">
-            <label className="label" htmlFor="paper">
-              Tamanho da folha
-            </label>
-            <select
-              id="paper"
-              className="input"
-              value={paper}
-              onChange={(e) => setPaper(e.target.value as PaperId)}
-            >
-              {PAPER_OPTIONS.map((o) => (
-                <option key={o.id} value={o.id}>
-                  {o.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button className="btn-primary" onClick={login} disabled={!configured}>
-              Entrar com a conta WCA
-            </button>
-            <button className="btn-ghost" onClick={gerarExemplo} disabled={busy}>
-              {busy ? 'Gerando…' : 'Baixar PDF de exemplo'}
-            </button>
-          </div>
-
-          <p className="mt-6 text-xs leading-relaxed text-slate-500">
-            Login oficial da WCA (OAuth) — nenhuma senha passa por aqui e nenhum segredo é
-            armazenado. Roda 100% no seu navegador.
-          </p>
+      {error && (
+        <div className="mt-8 w-full max-w-md rounded-lg border border-accent-red/40 bg-accent-red/10 px-4 py-3 text-sm text-red-500 dark:text-red-200">
+          {error}
         </div>
+      )}
 
-        <div className="flex flex-col items-center">
-          <span className="mb-3 text-xs uppercase tracking-widest text-slate-500">
-            Prévia da súmula
-          </span>
-          <div className="origin-top scale-90 sm:scale-100">
-            <ScorecardPreview model={preview} widthMm={105} />
-          </div>
+      {!configured && (
+        <div className="mt-8 w-full max-w-md rounded-lg border border-accent-yellow/40 bg-accent-yellow/10 px-4 py-3 text-sm text-amber-700 dark:text-amber-100">
+          <strong>Configuração pendente.</strong> Defina <code>VITE_WCA_CLIENT_ID</code> no build.
         </div>
-      </div>
+      )}
+
+      <button
+        onClick={login}
+        disabled={!configured}
+        className="btn-primary mt-10 gap-3 px-8 py-4 text-base sm:text-lg"
+      >
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3.2a6.8 6.8 0 0 1 6.2 4h-4.1a2.8 2.8 0 0 0-4.2 0H5.8a6.8 6.8 0 0 1 6.2-4zM5.2 12a6.8 6.8 0 0 1 .3-2h4.1a2.8 2.8 0 0 0 2.1 3.6l-2 3.5A6.8 6.8 0 0 1 5.2 12zm7.9 6.7 2-3.6a2.8 2.8 0 0 0 1.4-1.5h4.1a6.8 6.8 0 0 1-7.5 5.1z" />
+        </svg>
+        Entrar com a conta WCA
+      </button>
     </div>
   )
 }

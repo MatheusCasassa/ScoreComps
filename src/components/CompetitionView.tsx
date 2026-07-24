@@ -147,14 +147,14 @@ export function CompetitionView({
       {!wcif && !error && <Spinner label="Carregando rodadas e grupos…" />}
 
       {wcif && (
-        <div className="mt-4 flex gap-1 border-b border-ink-700">
+        <div className="mt-4 flex gap-1 border-b border-app-border">
           {(['grupos', 'sumulas'] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
               className={
                 'rounded-t-lg px-4 py-2 text-sm font-medium transition-colors ' +
-                (tab === t ? 'bg-ink-800 text-slate-100' : 'text-slate-400 hover:text-slate-200')
+                (tab === t ? 'bg-app-surface-2 text-app-fg' : 'text-app-muted hover:text-app-fg')
               }
             >
               {t === 'grupos' ? 'Agrupamento & staff' : 'Súmulas (grupos existentes)'}
@@ -200,8 +200,8 @@ export function CompetitionView({
           </div>
 
           {previewModel && (
-            <div className="mt-5 flex flex-col items-center rounded-xl border border-ink-700 bg-ink-900/40 p-5">
-              <span className="mb-3 text-xs uppercase tracking-widest text-slate-500">
+            <div className="mt-5 flex flex-col items-center rounded-xl border border-app-border bg-app-surface p-5">
+              <span className="mb-3 text-xs uppercase tracking-widest text-app-faint">
                 Prévia da primeira súmula
               </span>
               <div className="origin-top scale-90">
@@ -223,9 +223,9 @@ export function CompetitionView({
                       checked={roundOn}
                       onChange={() => toggleRound(r)}
                     />
-                    <span className="font-medium text-slate-100">
+                    <span className="font-medium text-app-fg">
                       {r.info.eventName}{' '}
-                      <span className="text-slate-500">· {r.info.label}</span>
+                      <span className="text-app-faint">· {r.info.label}</span>
                     </span>
                   </label>
 
@@ -240,7 +240,7 @@ export function CompetitionView({
                             'rounded-md border px-2.5 py-1 text-xs transition-colors ' +
                             (on
                               ? 'border-brand-500 bg-brand-600/20 text-brand-200'
-                              : 'border-ink-600 bg-ink-800 text-slate-400 hover:border-ink-500')
+                              : 'border-app-border bg-app-surface-2 text-app-muted hover:border-app-border-strong')
                           }
                         >
                           {g.label} · {g.count}
@@ -257,9 +257,9 @@ export function CompetitionView({
 
       {/* Barra fixa de ação */}
       {wcif && tab === 'sumulas' && (
-        <div className="fixed inset-x-0 bottom-0 z-10 border-t border-ink-700 bg-ink-950/90 backdrop-blur">
+        <div className="fixed inset-x-0 bottom-0 z-10 border-t border-app-border bg-app-bg backdrop-blur">
           <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-            <span className="text-sm text-slate-400">
+            <span className="text-sm text-app-muted">
               {totalCards} súmula{totalCards === 1 ? '' : 's'} selecionada
               {totalCards === 1 ? '' : 's'}
             </span>

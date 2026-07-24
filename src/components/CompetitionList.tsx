@@ -48,7 +48,7 @@ export function CompetitionList({ onSelect }: { onSelect: (c: CompetitionListIte
       <div className="mx-auto max-w-xl px-4 py-16">
         <div className="card p-8 text-center">
           <h2 className="text-xl font-bold">Acesso restrito</h2>
-          <p className="mt-3 text-sm text-slate-400">
+          <p className="mt-3 text-sm text-app-muted">
             Sua conta WCA não é Delegada nem Organizadora de nenhuma competição. Esta ferramenta é
             exclusiva para quem gerencia competições na WCA.
           </p>
@@ -60,12 +60,12 @@ export function CompetitionList({ onSelect }: { onSelect: (c: CompetitionListIte
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <h2 className="mb-1 text-lg font-bold">Suas competições</h2>
-      <p className="mb-5 text-sm text-slate-500">
+      <p className="mb-5 text-sm text-app-faint">
         Apenas competições em que você é Delegado ou Organizador aparecem aqui.
       </p>
 
       {comps.length === 0 ? (
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-app-muted">
           Você é Delegado, mas não há competições gerenciáveis no momento.
         </p>
       ) : (
@@ -74,11 +74,11 @@ export function CompetitionList({ onSelect }: { onSelect: (c: CompetitionListIte
             <li key={c.id}>
               <button
                 onClick={() => onSelect(c)}
-                className="card flex w-full items-center justify-between px-4 py-3 text-left transition-colors hover:border-brand-500/60 hover:bg-ink-800"
+                className="card flex w-full items-center justify-between px-4 py-3 text-left transition-colors hover:border-brand-500/60 hover:bg-app-surface-2"
               >
                 <span>
-                  <span className="block font-medium text-slate-100">{c.name}</span>
-                  <span className="block text-xs text-slate-500">
+                  <span className="block font-medium text-app-fg">{c.name}</span>
+                  <span className="block text-xs text-app-faint">
                     {formatDate(c.start_date)}
                     {c.city ? ` · ${c.city}` : ''}
                   </span>

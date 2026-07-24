@@ -118,7 +118,7 @@ export function GroupingPanel({ wcif, competition }: { wcif: Wcif; competition: 
               onChange={(e) => setStations(Math.max(1, Number(e.target.value) || 1))}
             />
           </div>
-          <p className="flex-1 text-xs text-slate-500">
+          <p className="flex-1 text-xs text-app-faint">
             As estações definem a sugestão de nº de grupos, embaralhadores, runners e juízes (mesma
             lógica do Groupifier). Ajuste cada rodada abaixo se quiser.
           </p>
@@ -140,10 +140,10 @@ export function GroupingPanel({ wcif, competition }: { wcif: Wcif; competition: 
                     checked={on}
                     onChange={() => setSelected((s) => ({ ...s, [r.roundId]: !s[r.roundId] }))}
                   />
-                  <span className="font-medium text-slate-100">
-                    {r.eventName} <span className="text-slate-500">· {r.label}</span>
+                  <span className="font-medium text-app-fg">
+                    {r.eventName} <span className="text-app-faint">· {r.label}</span>
                   </span>
-                  <span className="text-xs text-slate-500">{compCount[r.roundId]} inscritos</span>
+                  <span className="text-xs text-app-faint">{compCount[r.roundId]} inscritos</span>
                 </label>
 
                 {on && (
@@ -201,15 +201,15 @@ export function GroupingPanel({ wcif, competition }: { wcif: Wcif; competition: 
 
       {result && (
         <div className="mt-5 card p-4">
-          <h3 className="mb-3 text-sm font-bold text-slate-200">Grupos gerados</h3>
+          <h3 className="mb-3 text-sm font-bold text-app-fg">Grupos gerados</h3>
           <div className="space-y-3">
             {result.rounds.map((r) => (
               <div key={r.roundId}>
-                <div className="text-sm font-medium text-slate-100">{r.label}</div>
+                <div className="text-sm font-medium text-app-fg">{r.label}</div>
                 <div className="mt-1 flex flex-wrap gap-2">
                   {r.groups.map((g) => (
-                    <span key={g.number} className="rounded-md border border-ink-600 bg-ink-800 px-2.5 py-1 text-xs text-slate-300">
-                      Grupo {g.number}: <span className="font-semibold text-slate-100">{g.competitors}</span>
+                    <span key={g.number} className="rounded-md border border-app-border bg-app-surface-2 px-2.5 py-1 text-xs text-app-fg">
+                      Grupo {g.number}: <span className="font-semibold text-app-fg">{g.competitors}</span>
                     </span>
                   ))}
                 </div>
@@ -253,7 +253,7 @@ export function GroupingPanel({ wcif, competition }: { wcif: Wcif; competition: 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <span className="flex items-center gap-1">
-      <span className="text-slate-400">{label}</span>
+      <span className="text-app-muted">{label}</span>
       {children}
     </span>
   )
